@@ -1,0 +1,39 @@
+#test_win{
+    display: none;
+    /* height: 50%; */
+}
+
+.test_content{
+    width: 100%;
+    height: 50%;
+}
+
+.test_content p{
+    color: black;
+    font-size: 22px;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.test_content .button{
+    position: relative;
+    width: calc(100% - 15px);
+    margin-bottom: 15px;
+}
+
+.test_content .button p{
+    font-size: 20px;
+}
+
+.test_image{
+    width: 100%;
+    height: 50%;
+    background-size: cover;
+    background-position: center;
+
+    
+    border-left: 2px solid white;
+    border-top: 2px solid white;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+}

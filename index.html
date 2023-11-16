@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Не поздно | Студенческая весна ИНОЗ + ВШБ</title>
+
+    <link rel="stylesheet" href="/style/main.css">
+    <link rel="stylesheet" href="/style/load.css">
+    <link rel="stylesheet" href="/style/desktop.css">
+    <link rel="stylesheet" href="/style/windows/windows.css">
+    <link rel="stylesheet" href="/style/windows/otchet.css">
+    <link rel="stylesheet" href="/style/windows/internet.css">
+    <link rel="stylesheet" href="/style/windows/test.css">
+</head>
+<body>
+    <div class="load">
+        <img src="/images/loader.gif">
+        <p id="load_text"></p>
+    </div>
+
+
+    <div class="bg"></div>
+    
+
+    <div class="notif_vue">
+        <div class="clippy" v-on:click="clippy_click"></div>
+        <div class="notif" id="hint" v-if="show_hint">
+            <p>Нажми на скрепочку...</p>
+        </div>
+
+        <div class="notif" id="notif">
+            <p>{{phrases[rand]}}</p>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <ul class="icon-list">
+        <li onclick="open_window('internet')">
+            <img src="/images/internet.png">
+            <p>Програмка</p>
+        </li>
+        
+        <li onclick="open_window('otchet')">
+            <img src="/images/notepad.png">
+            <p>Отчет</p>
+        </li>
+
+        <li onclick="open_window('test')"> 
+            <img src="/images/solitaire.png">
+            <p>Тест</p>
+        </li>
+    </ul>
+
+    <div class="footer">
+        <div class="button">
+            <img src="/images/win.png" style="margin-right: 4px;">
+            <p><b>Пуск</b></p>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <img src="/images/win_loader_fast.gif" id="window_loader">
+
+    <div class="window" id="otchet_win">
+        <div class="window_title">
+            <p>Отчет.txt - Notepad</p>
+            <div class="button" style="height: 18px;">
+                <img src="/images/close-icon.png" width="12" onclick="close_windows()">
+            </div>
+        </div>
+
+        <ul class="window_instruments">
+            <li><p>Файл</p></li>
+            <li><p>Правка</p></li>
+            <li><p>Поиск</p></li>
+        </ul>
+
+        <textarea class="window_textarea" cols="30" readonly>
+ 1. Купить бургер в маке
+ 2. Позвонить кому то
+ 3. Еще один важный пункт
+
+
+
+
+        </textarea>
+    </div>
+
+ <!-- // site made by саша зоткин // -->
+
+
+
+
+
+
+
+    <div class="window" id="internet_win">
+        <div class="window_title">
+            <p>www.програмка.ру - Internet</p>
+            <div class="button" style="height: 18px;">
+                <img src="/images/close-icon.png" width="12" onclick="close_windows()">
+            </div>
+        </div>
+
+        <ul class="window_instruments">
+            <li><p>Файл</p></li>
+            <li><p>Правка</p></li>
+            <li><p>Поиск</p></li>
+        </ul>
+
+        <div class="search">
+            <p>Адрес</p>
+            <div class="search_input">http://www.програмка.ру</div>
+        </div>
+
+        <div class="site_content" :style="{'backgroundImage': 'url(/images/internetbg'+ curPage +'.png)'}">
+            <ul class="links">
+                <li v-on:click="curPage = 1" :style="{'backgroundColor': curPage == 1 ? 'red' : 'blue'}">
+                    В ролях
+                </li>
+
+                <li v-on:click="curPage = 2" :style="{'backgroundColor': curPage == 2 ? 'red' : 'blue'}">
+                    Номера
+                </li>
+
+                <li v-on:click="curPage = 3" :style="{'backgroundColor': curPage == 3 ? 'red' : 'blue'}">
+                    Орги
+                </li>
+            </ul>           
+
+            <header class="wordart-wrap">
+                <h1 class="rainbow" v-if="curPage == 1">В ролях</h1>
+                <h1 class="wordart" v-if="curPage == 2">Номера</h1>
+            </header>
+            <div class="fire_gifs" v-if="curPage == 1"></div>
+
+
+            <ul class="actors_list" v-show="curPage == 1">
+                <li>
+                    <img src="/images/actors/john.png">
+                    <p><b>Джон Доу</b><br>Александр Зоткин</p>
+                </li>
+
+                <li>
+                    <img src="/images/actors/past.png">
+                    <p><b>Прошлое</b><br>Денис Овчаренко</p>
+                </li>
+
+                <li>
+                    <img src="/images/actors/present.png">
+                    <p><b>Настоящее</b><br>Владислав Лим</p>
+                </li>
+
+                <li>
+                    <img src="/images/actors/future.png">
+                    <p><b>Будущее</b><br>Евгений Матросов</p>
+                </li>
+
+                <li>
+                    <img src="/images/actors/predvestnik.png">
+                    <p><b>Предвестник</b><br>Чебурахин Максим</p>
+                </li>
+
+                <li>
+                    <img src="/images/actors/eva.png">
+                    <p><b>Ева</b><br>Ася Василаки</p>
+                </li>
+
+                <li>
+                    <img src="/images/actors/bob.png">
+                    <p><b>Боб</b><br>Максим Клюшников </p>
+                </li>
+
+                <li>
+                    <img src="/images/actors/mary.png">
+                    <p><b>Мэри</b><br>Елизавета Семенистая</p>
+                </li>
+
+                <li>
+                    <img src="/images/actors/client1.png">
+                    <p><b>Клиент 1</b><br>Владимир Криченко</p>
+                </li>
+
+                <li>
+                    <img src="/images/actors/client2.png">
+                    <p><b>Клиент 2</b><br>Владислав Мамченко</p>
+                </li>
+
+                <li>
+                    <img src="/images/actors/hlibov.png">
+                    <p><b>Режиссер</b><br>Иван Хлыбов</p>
+                </li>
+            </ul>
+
+
+
+            <ul class="performance_list" v-show="curPage == 2">
+                <li>
+                    1. <b>Круг без конца?</b>
+                    <br>жанр: многожанровый
+                    <br>постановщики: Зоткин Александр, Куприненко Мария, Бондарюк Рената
+                </li>
+                <li>
+                    2. <b>Против себя</b>
+                    <br>жанр: танец
+                    <br>постановщики: Главинская Кристина
+                </li>
+                <li>
+                    3. <b>Крики в никуда</b>
+                    <br>жанр: вокал
+                    <br>постановщики: Фролова Елена, Тихонова Елизавета 
+                </li>
+                <li>
+                    4. <b>Изменить нельзя оставить</b>
+                    <br>жанр: синтез
+                    <br>постановщики: Главинская Кристина, Гапоненко Дмитрий, Астахов Артём, Байгильдин Артур  
+                </li>
+                <li>
+                    5. <b>Нельзя простить?</b>
+                    <br>жанр: театр
+                    <br>постановщики: Короткова Екатерина, Сотникова Олеся
+                </li>
+                <li>
+                    6. <b>Забытое прошлое</b>
+                    <br>жанр: многожанровый
+                    <br>постановщики: Мезенцева Анна, Стрельникова Татьяна, Ларцева Александра
+                </li>
+                <li>
+                    7. <b>Никто не в силах противостоять</b>
+                    <br>жанр: танец
+                    <br>постановщики: Васильева Ольга  
+                </li>
+                <li>
+                    8. <b>Невозможное настоящее</b>
+                    <br>жанр: вокал
+                    <br>постановщики: Наливайко Алиса   
+                </li>
+                <li>
+                    9. <b>Будущее среди нас</b>
+                    <br>жанр: техно-арт
+                    <br>постановщики: Тарновецкий Данил, Гарматина Яна, Бурдюгова Полина 
+                </li>
+                <li>
+                    10. <b>А если совместить?</b>
+                    <br>жанр: танец
+                    <br>постановщики: Чибичян Григорий, Атаманова Вероника, Главинская Кристина
+                </li>
+                <li>
+                    11. <b>Время – тонкая красная нить</b>
+                    <br>жанр: театр мод
+                    <br>постановщики: Усова Анастасия, Криченко Владимир
+                </li>
+                <li>
+                    12. <b>Виноваты мы сами</b>
+                    <br>жанр: вокал, от лучшего вокального коллектива всего мира «
+                    <b><span style="color: red; margin: -2px;">Н</span></b>    
+                    <b><span style="color: blue; margin: -2px;">е</span></b>  
+                    <b><span style="color: orange; margin: -2px;">п</span></b>  
+                    <b><span style="color: red; margin: -2px;">о</span></b>  
+                    <b><span style="color: purple; margin: -2px;">ю</span></b>  
+                    <b><span style="color: rgb(0, 183, 255); margin: -2px;">щ</span></b>  
+                    <b><span style="color: green; margin: -2px;">и</span></b>  
+                    <b><span style="color: blue; margin: -2px;">е</span></b>  
+                    »
+                    <br>постановщики: Бабурина Анастасия, Григорян Зара, Зоткин Александр  
+                </li>
+                <li>
+                    13. <b>По(ме)нять и начать заново</b>
+                    <br>жанр: танец от творческого коллектива <b>«Diamonds»</b>
+                    <br>постановщики: Лаврова Юлия, Атаманова Вероника, Махно Ангелина   
+                </li>
+                <li>
+                    14. <b>Нельзя упустить мгновенье?</b>
+                    <br>жанр: театр
+                    <br>постановщики: Франчук Алена, Логинов Никита 
+                </li>
+                <li>
+                    15. <b>Прыжок в неизвестность</b>
+                    <br>жанр: видео
+                    <br>постановщики: Филонов Константин, Худекова Анна
+                </li>
+            </ul>
+
+
+            <ul class="chat_list" v-show="curPage == 3">
+                <li v-for="chat in chats">
+                    <img class="chat_avatar" :src="'/images/chat/' + chat.img">
+                    <div class="chat_info">
+                        <b>{{chat.name}}</b>
+                        <i>{{chat.nik}}</i>
+                        {{chat.role}}
+
+                        <img :src="'/images/chat/icq' + chat.status + '.png'" class="chat_status">
+                    </div>
+                </li>      
+            </ul>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <div class="window" id="test_win">
+        <div class="window_title">
+            <p>Тест - Игра</p>
+            <div class="button" style="height: 18px;">
+                <img src="/images/close-icon.png" width="12" onclick="close_windows()">
+            </div>
+        </div>
+
+        <ul class="window_instruments">
+            <li><p>Файл</p></li>
+            <li><p>Правка</p></li>
+            <li><p>Поиск</p></li>
+        </ul>
+
+        <div class="test_content">
+            <p style="font-weight: 600;" v-if="cur_question > 0 && cur_question < questions.length - 1">{{cur_question}} / {{questions.length - 2}}</p>
+            <p v-html="questions[cur_question].qmain"></p>
+            <div class="button" v-for="(q, index) in questions[cur_question].qall" v-on:click="inc(q[1])">
+                <p>{{q[0]}}</p>
+            </div>
+        </div>
+
+        <div :style="{backgroundImage: 'url(/images'+ questions[cur_question].image +')'}" class="test_image"></div>
+    </div>
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/TextPlugin.min.js"></script>
+<script src="/js/vue.min.js"></script>
+
+<script src="/js/script.js"></script>
+<script src="/js/internet.js"></script>
+<script src="/js/test.js"></script>
+</html>
